@@ -1,0 +1,34 @@
+import React from 'react'
+import {Routes, Route} from 'react-router-dom'
+import Home from './Pages/Home'
+import About from './Pages/About'
+import Contact from './Pages/Contact'
+import Collections from './Pages/Collections'
+import Product from './Pages/Product'
+import Cart from './Pages/Cart'
+import PlaceOrder from './Pages/PlaceOrder'
+import Orders from './Pages/Orders'
+import Login from './Pages/Login'
+import NavBar from "./Components/NavBar"
+
+const App = () => {
+  return (
+    <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
+      <NavBar/>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/contact" element={<Contact/>} />
+        <Route path="/collections" element={<Collections/>} />
+        <Route path="/product/:id" element={<Product/>} />
+        <Route path="/cart" element={<Cart/>} />
+        <Route path="/place-order" element={<PlaceOrder/>} />
+        <Route path="/order" element={<Orders/>} />
+        <Route path="/login" element={<Login/>} />
+      </Routes>
+      
+    </div>
+  )
+}
+
+export default App
