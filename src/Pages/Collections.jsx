@@ -6,7 +6,7 @@ import ProductItem from '../Components/ProductItem.jsx'
 
 const Collections = () => {
 
-  const {products} = useContext(ShopContext)
+  const {products, search, showSearch} = useContext(ShopContext)
   const [filter, setFilter] = useState(false) 
   const [filterProducts, setFilterProducts] = useState([])
   const [category, setCategory] = useState([])
@@ -14,6 +14,7 @@ const Collections = () => {
   const [sortType, setSortType] = useState('relavant')
 
   const toggleCategory = (e) => {
+
     if(category.includes(e.target.value)){
       setCategory(prev=> prev.filter(item => item != e.target.value))
     }
@@ -33,6 +34,10 @@ const Collections = () => {
 
   const applyFilter = () => {
     let productsCopy = products.slice()
+
+    if(search && showSearch){
+      productsCopy = products.filter((item)=> item.name.toLowerCase().includes(search.toLowerCase()))
+    }
 
     if(category.length > 0){
       productsCopy = productsCopy.filter((item) => category.includes(item.category))
@@ -65,7 +70,7 @@ const Collections = () => {
 
   useEffect(() => {
     applyFilter()
-  }, [category, SubCategory])
+  }, [category, SubCategory, search, showSearch])
 
   useEffect(() => {
     sortByPrice()
