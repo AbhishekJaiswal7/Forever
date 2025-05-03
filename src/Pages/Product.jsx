@@ -93,6 +93,7 @@ const Product = () => {
           </div>
        </div>
 
+       {/* Recommended Products */}
        <RelatedProducts category={productData.category} subCategory={productData.subCategory}/>
 
     </div>
