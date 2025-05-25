@@ -16,7 +16,6 @@ const Contact = () => {
           <p className='font-semibold text-xl text-gray-600'>Our Store</p>
           <p className='text-gray-500'>123 Maple Street, Springfield, IL 62704, USA</p>
           <p className='text-gray-500'>Phone : (555) 019-3847</p>
-          <p className='text-gray-500'>Learn more about us</p>
          </div>
       </div>
 
