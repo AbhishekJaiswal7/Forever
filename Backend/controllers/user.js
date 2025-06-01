@@ -3,7 +3,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import validator from "validator";
 
-
 const createToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET)
 }
@@ -72,4 +71,19 @@ const registerUser = async (req, res) => {
   }
 };
 
-export { loginUser, registerUser };
+
+const adminLogin = async(req, res) => {
+   try {
+     const {email, password} = req.body;
+     
+     if(email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD){
+        const token = jwt.sign(email+password, process.env.JWT_SECRET)
+        res.json({success : true, token})
+     }
+
+   } catch (error) {
+       res.json({success : false, message : error.message})
+   }
+}
+
+export { loginUser, registerUser, adminLogin };
