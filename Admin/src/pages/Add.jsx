@@ -73,13 +73,13 @@ const Add = ({token}) => {
       </div>
 
       <div className="w-full">
-         <p onChange={(e)=> setName(e.target.value)} value={name} className="mb-2">Product Name</p>
-         <input className="w-full max-w-[500px] px-3 py-2" type="text" placeholder="Type here" required/>
+         <p className="mb-2">Product Name</p>
+         <input onChange={(e)=> setName(e.target.value)} value={name} className="w-full max-w-[500px] px-3 py-2" type="text" placeholder="Type here" required/>
       </div>
 
       <div className="w-full">
-         <p onChange={(e)=> setDescription(e.target.value)} value={description} className="mb-2">Product Description</p>
-         <input className="w-full max-w-[500px] px-3 py-2" type="text" placeholder="Write Content here" required/>
+         <p className="mb-2">Product Description</p>
+         <input onChange={(e)=> setDescription(e.target.value)} value={description} className="w-full max-w-[500px] px-3 py-2" type="text" placeholder="Write Content here" required/>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-2 w-full sm:gap-8">
@@ -102,8 +102,8 @@ const Add = ({token}) => {
           </div>
 
           <div>
-             <p onChange={(e)=> setPrice(e.target.value)} value={price}>Product Price</p>
-             <input className="w-full px-3 py-2 sm:w-[120px]" type="Number" placeholder="25" />
+             <p>Product Price</p>
+             <input onChange={(e)=> setPrice(e.target.value)} value={price} className="w-full px-3 py-2 sm:w-[120px]" type="Number" placeholder="25" />
           </div>
       </div>
 
