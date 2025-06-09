@@ -70,7 +70,7 @@ const Collections = () => {
 
   useEffect(() => {
     applyFilter()
-  }, [category, SubCategory, search, showSearch])
+  }, [category, SubCategory, search, showSearch, products])
 
   useEffect(() => {
     sortByPrice()
