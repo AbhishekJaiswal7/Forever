@@ -12,6 +12,7 @@ const ShopContextProvider = (props) => {
     const [showSearch, setShowSearch] = useState(false)
     const [cartItems, setCartItems] = useState({})
     const [products, setProducts] = useState([])
+    const [token, setToken] = useState('')
     const navigate = useNavigate();
 
     const addToCart = async (itemId, size) => {
@@ -76,22 +77,28 @@ const ShopContextProvider = (props) => {
     }
 
     const getProductsData = async () => {
-  try {
-    const response = await axios.post(backendUrl + '/api/product/list');
-    if (response.data.success) {
-      setProducts(response.data.products);
-      console.log(response.data)
-    } else {
-      toast.error(response.data.message);
-    }
-  } catch (error) {
-    toast.error(error.message);
-    console.error(error);
-  }
-};
+        try {
+            const response = await axios.post(backendUrl + '/api/product/list');
+            if (response.data.success) {
+                setProducts(response.data.products);
+                console.log(response.data)
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            toast.error(error.message);
+            console.log(error);
+        }
+    };
 
-    useEffect(()=> {
+    useEffect(() => {
         getProductsData()
+    }, [])
+
+    useEffect(() => {
+        if(!token && localStorage.getItem('token')){
+            setToken(localStorage.getItem('token'))
+        }
     }, [])
 
     const value = {
@@ -99,7 +106,8 @@ const ShopContextProvider = (props) => {
         search, setSearch, showSearch, setShowSearch,
         cartItems, setCartItems, addToCart,
         getCartCount, updateQuantity,
-        getCartAmount, navigate, backendUrl
+        getCartAmount, navigate, backendUrl,
+        token, setToken
     }
 
     return(
